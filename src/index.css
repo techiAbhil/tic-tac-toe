@@ -64,3 +64,74 @@ main {
     width: 32%;
   }
 }
+
+.line-1 {
+  background: linear-gradient(
+    to top right,
+    #fff calc(50% - 1px),
+    #aaa,
+    #fff calc(50% + 1px)
+  );
+}
+.line-2 {
+  background: linear-gradient(
+    to bottom right,
+    #fff calc(50% - 1px),
+    #aaa,
+    #fff calc(50% + 1px)
+  );
+}
+
+.line-3 {
+  background: linear-gradient(
+    to right,
+    #fff calc(50% - 1px),
+    #aaa,
+    #fff calc(50% + 1px)
+  );
+}
+
+.line-4 {
+  background: linear-gradient(
+    to bottom,
+    #fff calc(50% - 1px),
+    #aaa,
+    #fff calc(50% + 1px)
+  );
+}
+
+.line-5 {
+  background: linear-gradient(
+    to bottom,
+    #fff calc(85% - 1px),
+    #aaa,
+    #fff calc(85% + 1px)
+  );
+}
+
+.line-6 {
+  background: linear-gradient(
+    to bottom,
+    #fff calc(20% - 1px),
+    #aaa,
+    #fff calc(20% + 1px)
+  );
+}
+
+.line-7 {
+  background: linear-gradient(
+    to left,
+    #fff calc(17% - 1px),
+    #aaa,
+    #fff calc(17% + 1px)
+  );
+}
+
+.line-8 {
+  background: linear-gradient(
+    to right,
+    #fff calc(17% - 1px),
+    #aaa,
+    #fff calc(17% + 1px)
+  );
+}
