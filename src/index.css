@@ -11,12 +11,18 @@ main {
   height: 100vh;
   width: 100%;
   flex-direction: column;
+  background: linear-gradient(to right top, #ada996, #203a43);
 }
 
 .box-container {
   display: flex;
   flex-wrap: wrap;
-  width: 50%;
+  width: 40%;
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.3)
+  );
 }
 
 .box {
@@ -43,7 +49,7 @@ main {
 #box-3,
 #box-4,
 #box-5 {
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid #fff;
 }
 
 #box-0,
@@ -52,7 +58,7 @@ main {
 #box-1,
 #box-4,
 #box-7 {
-  border-right: 2px solid black;
+  border-right: 2px solid #fff;
 }
 
 @media screen and (max-width: 768px) {
@@ -63,4 +69,17 @@ main {
   .box {
     width: 32%;
   }
+}
+
+@keyframes blinking {
+  0% {
+    background-color: #00b09b;
+  }
+  100% {
+    background-color: #96c93d;
+  }
+}
+
+.highlight-text {
+  animation: blinking 1s infinite;
 }

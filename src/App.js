@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Swal from 'sweetalert2';
 
 const initialBoxState = Array(9).fill(null);
 
@@ -21,9 +22,26 @@ function App() {
 
   const [boxState, setBoxState] = useState(initialBoxState);
   const [tickCount, setTickCount] = useState(0);
+  const [winningLine, setWinningLine] = useState([]);
+
+  const highlightWinner = (winner, line) => {
+    setWinningLine(line);
+    setTimeout(() => {
+      if (winner) {
+        Swal.fire({
+          icon: 'success',
+          title: 'We have a Winner!',
+          text: `Winner is ${winner}`
+        }
+        ).then(() => {
+          onClearBtnClick();
+        });
+      }
+    }, 2000)
+  }
 
   const drawXO = (boxID) => {
-    if (boxState[boxID]) {
+    if (boxState[boxID] || winningLine.length !== 0) {
       // if key is not null then return 
       return;
     }
@@ -32,20 +50,31 @@ function App() {
     setBoxState(updatedBoxState);
     setTickCount(tickCount + 1);
 
-    let winner = null;
     lineArray.forEach((line) => {
       if (line.every(columnIndex => updatedBoxState[columnIndex] === 'X')) {
-        winner = 'X';
+        highlightWinner('X', line);
+        return;
       } else if (line.every(columnIndex => updatedBoxState[columnIndex] === 'O')) {
-        winner = 'O';
+        highlightWinner('O', line);
+        return;
       }
     });
 
-    if (winner)
-      alert(`Winner is ${winner}`);
+    //check if the match is draw
+    if (tickCount === 8) {
+      Swal.fire({
+        icon: 'info',
+        title: 'Oops..!',
+        text: `The match is draw`
+      }
+      ).then(() => {
+        onClearBtnClick();
+      });
+    }
   }
 
   const onClearBtnClick = () => {
+    setWinningLine([]);
     setBoxState(initialBoxState);
     setTickCount(0);
   }
@@ -55,8 +84,9 @@ function App() {
       <section className="box-container">
         {
           boxState.map((_, index) => {
+            const shouldHighlight = winningLine.some(lineIndex => lineIndex === index);
             return (
-              <div key={index} id={`box-${index}`} className="box" onClick={() => drawXO(index)}>
+              <div key={index} id={`box-${index}`} className={`box ${shouldHighlight ? "highlight-text" : ""}`} onClick={() => drawXO(index)}>
                 {boxState[index] ?? ""}
               </div>
             )
