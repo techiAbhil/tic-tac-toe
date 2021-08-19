@@ -80,6 +80,6 @@ main {
   }
 }
 
-.highlight-text {
+.highlight-div {
   animation: blinking 1s infinite;
 }

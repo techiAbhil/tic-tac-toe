@@ -86,7 +86,7 @@ function App() {
           boxState.map((_, index) => {
             const shouldHighlight = winningLine.some(lineIndex => lineIndex === index);
             return (
-              <div key={index} id={`box-${index}`} className={`box ${shouldHighlight ? "highlight-text" : ""}`} onClick={() => drawXO(index)}>
+              <div key={index} id={`box-${index}`} className={`box ${shouldHighlight ? "highlight-div" : ""}`} onClick={() => drawXO(index)}>
                 {boxState[index] ?? ""}
               </div>
             )
